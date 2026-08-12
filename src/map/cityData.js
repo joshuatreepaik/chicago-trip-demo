@@ -59,7 +59,7 @@ export const LANDMARKS = {
   artsClub: [-37, -125],
   lou: [6, -23],
   volare: [26, -25],
-  starbucks: [6, -62],
+  starbucks: [10, -62],
 };
 
 // Zones where generic buildings must NOT spawn: [x, z, radius]
@@ -75,7 +75,7 @@ export const EXCLUSIONS = [
   [-37, -125, 9],
   [6, -23, 6],
   [26, -25, 6],
-  [6, -62, 8],
+  [10, -62, 9],
 ];
 
 export const MAP_BOUNDS = { xMin: -135, xMax: 44, zMin: -138, zMax: 42 };
