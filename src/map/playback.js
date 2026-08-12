@@ -139,7 +139,9 @@ export class Playback {
       const sprite = makeMarkerSprite(s.emoji, 6.5, i, logo);
       // 360's marker rides higher up the tower; hotelNight floats above 🏨
       const markerY = s.id === '360' ? 15 : s.id === 'hotelNight' ? 13.5 : 9;
-      sprite.position.set(s.pos[0], markerY, s.pos[1]);
+      // markerPos lets the icon hover over the building while the couple stands nearby
+      const mp = s.markerPos || s.pos;
+      sprite.position.set(mp[0], markerY, mp[1]);
       sprite.userData.stopIndex = i;
       sprite.userData.baseY = sprite.position.y;
       scene.add(sprite);
@@ -238,7 +240,8 @@ export class Playback {
       : this.strolls[i]
         ? this.strolls[i].duration + 1.5
         : STOP_DWELL;
-    this.couple.group.visible = true;
+    // 'indoors' stops (sleeping at the hotel) hide the couple inside the building
+    this.couple.group.visible = !stop.indoors;
     this.couple.group.scale.setScalar(1.35);
     // observation-deck stops place the couple high up on the tower
     if (stop.deck) {

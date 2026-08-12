@@ -20,7 +20,9 @@ export const STOPS = [
     day: 1,
     sky: 'goldenHour',
     note: 'the legendary Chicago deep dish 🍕',
-    pos: [-3, -16],
+    pos: [6, -18], // stand at the pizzeria's entrance
+    markerPos: [6, -23], // icon hovers over the building
+    cameraOffset: [5, 17, 26], // frame from the open river side (south)
     eat: true,
     leg: [
       {
@@ -29,8 +31,9 @@ export const STOPS = [
           [-10, 9],
           [-6, 7],
           [0, 7],
-          [0, -10],
-          [-3, -16],
+          [0, -7],
+          [3, -13],
+          [6, -18],
         ],
       },
     ],
@@ -49,9 +52,8 @@ export const STOPS = [
       {
         mode: 'walk',
         points: [
-          [-3, -16],
-          [0, -13],
-          [2, -9],
+          [6, -18],
+          [6, -13],
           [6, -8],
         ],
       },
@@ -172,6 +174,7 @@ export const STOPS = [
     sky: 'night',
     note: 'lights out before day two 💤',
     pos: [-10, 9],
+    indoors: true, // asleep inside the hotel — they come back out next morning
     leg: [
       {
         // back east along the promenade to the hotel

@@ -426,6 +426,8 @@ export function buildLandmarks(scene) {
   sbTower.position.set(6, 0, 5.5);
   sbux.add(sbTower);
 
+  // slim the footprint slightly so it fits the block west of Michigan Ave
+  sbux.scale.set(0.85, 1, 0.85);
   sbux.position.set(LANDMARKS.starbucks[0], 0, LANDMARKS.starbucks[1]);
   group.add(sbux);
 
