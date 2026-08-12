@@ -9,9 +9,9 @@ const DEMO = {
   variant: 'demo',
   title: 'A Weekend in Chicago 💌',
   metaDescription:
-    'An interactive low-poly Chicago you can travel through — built with Three.js.',
+    'An interactive low poly Chicago you can travel through, built with Three.js.',
   ogTitle: 'A Weekend in Chicago 💌',
-  ogDescription: 'An interactive 3D trip — open the letter ✦',
+  ogDescription: 'An interactive 3D trip. open the letter ✦',
 
   sealInitials: '★',
   sealHeart: '',
@@ -22,7 +22,7 @@ const DEMO = {
     heading: 'Dear friend,',
     paragraphs: [
       'Some trips deserve to be more than ordinary.',
-      'Come spend <b>August 14–15</b> in <b>Chicago</b> — deep-dish pizza, a boat ride under the skyline, the city lights from 1,000 feet up, and a surprise or two ✨',
+      'Come spend a weekend in <b>Chicago</b>: deep dish pizza, a boat ride under the skyline, the city lights from 1,000 feet up, and a surprise or two ✨',
       'So… what do you say?',
     ],
     signoff: 'See you there ✦',
@@ -30,16 +30,16 @@ const DEMO = {
     no: 'No',
   },
 
-  // no schedule shown — hides the info-card time and the date chip
+  // no schedule shown; hides the info-card time and the date chip
   showSchedule: false,
 
   hud: {
-    hint: 'the trip plays on its own — tap any bubble to jump around ✦',
+    hint: 'the trip plays on its own, tap any bubble to jump around ✦',
     banner: '✨ the city lights up 🎆',
     finaleBanner: '✦ thank you for visiting ✦',
     closing: [
       'Thanks for exploring!',
-      'A little interactive Chicago,<br/>hand-built in the browser ✦',
+      'A little interactive Chicago,<br/>built in the browser ✦',
     ],
     closingSign:
       'Built by <a href="https://github.com/joshuatreepaik" target="_blank" rel="noopener">Josh</a>',
@@ -52,17 +52,17 @@ const DEMO = {
 
   // neutral notes (real Chicago place names stay in itinerary.js)
   stopCopy: {
-    hotel: { name: 'Hotel — check-in', note: 'home base for the weekend 🗝️' },
+    hotel: { name: 'The hotel', note: 'home base for the weekend 🗝️' },
     pizza: { note: 'the legendary Chicago deep dish 🍕' },
     apple: { note: 'the shiniest little stop on the river' },
     boat: { note: 'the skyline from the water 🚤' },
-    '360': { note: 'up on the deck — the whole city glowing below' },
+    '360': { note: 'up on the deck, the whole city glowing below' },
     riverwalk: { note: 'a slow walk under the city lights' },
     hotelNight: { name: 'Back at the hotel', note: 'lights out before day two 💤' },
     pancakes: { note: 'a stack to start the day 🥞' },
     navypier: { name: 'Navy Pier', note: 'up and around on the Ferris wheel 🎡' },
     cafe: { note: 'the prettiest café in the city ☕' },
-    magmile: { note: 'a little shopping spree 🛍️' },
+    magmile: { name: 'Magnificent Mile', note: 'a little shopping spree 🛍️' },
     volare: { note: 'dinner, Italian style 🥂' },
   },
 };

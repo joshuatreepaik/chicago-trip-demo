@@ -4,7 +4,7 @@
 export const STOPS = [
   {
     id: 'hotel',
-    name: 'The River Hotel — check-in',
+    name: 'The River Hotel',
     emoji: '🏨',
     time: '',
     day: 1,
@@ -135,7 +135,7 @@ export const STOPS = [
   },
   {
     id: 'riverwalk',
-    name: 'Riverwalk — late night walk',
+    name: 'Riverwalk stroll',
     emoji: '🌙',
     time: '',
     day: 1,
@@ -167,7 +167,7 @@ export const STOPS = [
   },
   {
     id: 'hotelNight',
-    name: 'Back at the hotel — good night',
+    name: 'Back at the hotel',
     emoji: '😴',
     time: '',
     day: 1,
@@ -273,7 +273,7 @@ export const STOPS = [
   },
   {
     id: 'magmile',
-    name: 'Magnificent Mile — Sephora & Starbucks Reserve',
+    name: 'Magnificent Mile',
     emoji: '🛍️',
     time: '',
     day: 2,
