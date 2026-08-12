@@ -55,6 +55,7 @@ export class Playback {
     canvas,
     couple,
     vehicles, // { boat, train, car }
+    ferrisSeat, // rotating anchor on the Navy Pier wheel
     daynight,
     effects,
     hud,
@@ -67,6 +68,7 @@ export class Playback {
       canvas,
       couple,
       vehicles,
+      ferrisSeat,
       daynight,
       effects,
       hud,
@@ -229,11 +231,21 @@ export class Playback {
     this.mode = 'stop';
     this.stopIndex = i;
     this.strollTime = 0;
-    // stroll stops last as long as the walk itself (plus a beat at the end)
-    this.stopTimer = this.strolls[i] ? this.strolls[i].duration + 1.5 : STOP_DWELL;
+    this.riding = stop.ride || null; // 'ferris' → ride the Navy Pier wheel
+    // rides + strolls last longer than a normal stop
+    this.stopTimer = this.riding
+      ? 10
+      : this.strolls[i]
+        ? this.strolls[i].duration + 1.5
+        : STOP_DWELL;
     this.couple.group.visible = true;
     this.couple.group.scale.setScalar(1.35);
-    this.couple.group.position.set(stop.pos[0], 0, stop.pos[1]);
+    // observation-deck stops place the couple high up on the tower
+    if (stop.deck) {
+      this.couple.group.position.set(stop.deck[0], stop.deck[1], stop.deck[2]);
+    } else {
+      this.couple.group.position.set(stop.pos[0], 0, stop.pos[1]);
+    }
     this.couple.setHat(C.partyHat && stop.day === 2);
     this.daynight.blend(stop.sky, stop.sky, 0);
     this.hud.showStop(stop);
@@ -303,7 +315,7 @@ export class Playback {
     this.celebrationTime = 0;
     this.boomTimer = 0.3;
     this.hud.hideCard();
-    this.hud.setDay(2); // flip the chip to 8/15 🎂 as the banner appears
+    this.hud.setDay(2); // flip the day chip as the banner appears
     this.hud.showBanner();
     this.couple.setHat(C.partyHat);
     this.audio.stopLoops();
@@ -337,7 +349,7 @@ export class Playback {
     this.audio.stopLoops();
     this.activeLoop = null;
     this.daynight.blend('sunset', 'sunset', 0);
-    this.hud.showBanner({ sticky: true });
+    this.hud.showBanner({ sticky: true, text: C.hud.finaleBanner || C.hud.banner });
     this.effects.startFireworkShow(70, -5);
     this.effects.startHearts(this.couple.group.position);
     // camera: turn east — sky and Lake Michigan, couple silhouetted below
@@ -390,6 +402,15 @@ export class Playback {
             this.audio.stopLoops();
             this.activeLoop = null;
           }
+        }
+        // ferris-wheel ride: sit the couple on the rotating seat, frame the wheel
+        if (this.riding === 'ferris' && this.ferrisSeat) {
+          this.ferrisSeat.getWorldPosition(this._pos);
+          this.couple.group.position.copy(this._pos);
+          this.couple.group.scale.setScalar(0.9);
+          this._tan.set(0, 0, 1); // face out toward the lake/skyline
+          this.couple.face(this._tan);
+          this.desiredTarget.set(76, 8, -16);
         }
         this.stopTimer -= dt;
         if (this.stopTimer <= 0) this._depart();

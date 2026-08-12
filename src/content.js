@@ -30,16 +30,21 @@ const DEMO = {
     no: 'No',
   },
 
+  // no schedule shown — hides the info-card time and the date chip
+  showSchedule: false,
+
   hud: {
     hint: 'the trip plays on its own — tap any bubble to jump around ✦',
-    banner: '🎉 Day 2 — let the fun begin! 🎆',
+    banner: '✨ the city lights up 🎆',
+    finaleBanner: '✦ thank you for visiting ✦',
     closing: [
-      "That's the trip!",
-      'Two days, one city.<br/>Thanks for exploring ✦',
+      'Thanks for exploring!',
+      'A little interactive Chicago,<br/>hand-built in the browser ✦',
     ],
-    closingSign: '— built with Three.js 🤍',
+    closingSign:
+      'Built by <a href="https://github.com/joshuatreepaik" target="_blank" rel="noopener">Josh</a>',
     replay: '♥ Replay the trip',
-    day2Chip: '8/15',
+    day2Chip: '',
   },
 
   boatHullName: 'CHICAGO',
@@ -47,15 +52,15 @@ const DEMO = {
 
   // neutral notes (real Chicago place names stay in itinerary.js)
   stopCopy: {
-    hotel: { note: 'home base for the weekend 🗝️' },
-    pizza: { note: "Chicago's legendary deep dish 🍕" },
+    hotel: { name: 'Hotel — check-in', note: 'home base for the weekend 🗝️' },
+    pizza: { note: 'the legendary Chicago deep dish 🍕' },
     apple: { note: 'the shiniest little stop on the river' },
     boat: { note: 'the skyline from the water 🚤' },
-    '360': { note: 'the whole city glowing, 1,000 ft down' },
+    '360': { note: 'up on the deck — the whole city glowing below' },
     riverwalk: { note: 'a slow walk under the city lights' },
     hotelNight: { name: 'Back at the hotel', note: 'lights out before day two 💤' },
-    pancakes: { note: 'a stack to start day two 🥞' },
-    haircut: { name: 'iO Studio — fresh cut', note: 'a fresh cut, then back out ✂️' },
+    pancakes: { note: 'a stack to start the day 🥞' },
+    navypier: { name: 'Navy Pier', note: 'up and around on the Ferris wheel 🎡' },
     cafe: { note: 'the prettiest café in the city ☕' },
     magmile: { note: 'a little shopping spree 🛍️' },
     volare: { note: 'dinner, Italian style 🥂' },

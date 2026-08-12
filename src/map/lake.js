@@ -86,6 +86,10 @@ export function buildLake(scene) {
   }
   wheel.position.set(16, 7.6, 0);
   pier.add(wheel);
+  // a seat anchor that rides around with the wheel (couple sits here at the pier stop)
+  const riderSeat = new THREE.Object3D();
+  riderSeat.position.set(0, -4.6, 0.9); // near a gondola, front face
+  wheel.add(riderSeat);
   for (const side of [1, -1]) {
     const leg = new THREE.Mesh(new THREE.BoxGeometry(0.35, 7.8, 0.35), ringMat);
     leg.position.set(16 + side * 1.8, 4, side * 1);
@@ -220,6 +224,7 @@ export function buildLake(scene) {
 
   let t = 0;
   return {
+    riderSeat,
     update(dt) {
       t += dt;
       wheel.rotation.z += dt * 0.22;

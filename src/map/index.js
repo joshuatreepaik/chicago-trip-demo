@@ -85,6 +85,7 @@ export class MapScene {
         train: buildTrain(this.scene),
         car: buildCar(this.scene),
       },
+      ferrisSeat: this.lake.riderSeat,
       daynight: this.daynight,
       effects: this.effects,
       hud: this.hud,

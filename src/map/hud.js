@@ -11,7 +11,7 @@ const CARD_LOGOS = {
 
 export function buildHud(root, { onPrev, onNext, onTogglePlay, onJump, onReplay }) {
   root.innerHTML = `
-    <div class="day-chip">8/14</div>
+    <div class="day-chip"></div>
     <div class="info-card">
       <div class="ic-emoji"></div>
       <div>
@@ -77,7 +77,7 @@ export function buildHud(root, { onPrev, onNext, onTogglePlay, onJump, onReplay 
         cardEmoji.textContent = stop.emoji;
       }
       const copy = C.stopCopy[stop.id] || {};
-      cardTime.textContent = stop.time;
+      cardTime.textContent = C.showSchedule === false ? '' : stop.time;
       cardTitle.textContent = copy.name ?? stop.name;
       cardNote.textContent = copy.note ?? stop.note;
       card.classList.add('show');
@@ -86,7 +86,11 @@ export function buildHud(root, { onPrev, onNext, onTogglePlay, onJump, onReplay 
       card.classList.remove('show');
     },
     setDay(day) {
-      dayChip.textContent = day === 1 ? '8/14' : C.hud.day2Chip;
+      if (C.showSchedule === false) {
+        dayChip.style.display = 'none';
+        return;
+      }
+      dayChip.textContent = day === 1 ? '' : C.hud.day2Chip;
     },
     setCurrentDot(i) {
       dots.forEach((d, j) => {
@@ -98,7 +102,8 @@ export function buildHud(root, { onPrev, onNext, onTogglePlay, onJump, onReplay 
       playBtn.textContent = playing ? '⏸' : '▶';
       playBtn.title = playing ? 'pause' : 'play';
     },
-    showBanner({ sticky = false } = {}) {
+    showBanner({ sticky = false, text } = {}) {
+      banner.textContent = text ?? C.hud.banner;
       banner.classList.add('show');
       if (!sticky) setTimeout(() => banner.classList.remove('show'), 7000);
     },

@@ -42,6 +42,42 @@ export function buildLandmarks(scene) {
     antenna.position.set(s * 1.6, 94, 0);
     hancock.add(antenna);
   }
+  // observation deck near the top — visitors stand out here (the couple rides up)
+  const deckY = 76;
+  const deckMat = new THREE.MeshStandardMaterial({ color: '#2f333a', roughness: 0.6 });
+  const deckGlass = new THREE.MeshStandardMaterial({
+    color: '#bfe0ea',
+    transparent: true,
+    opacity: 0.28,
+    roughness: 0.1,
+  });
+  const deckFloor = new THREE.Mesh(new THREE.BoxGeometry(11, 0.4, 11), deckMat);
+  deckFloor.position.y = deckY;
+  hancock.add(deckFloor);
+  const deckRoof = new THREE.Mesh(new THREE.BoxGeometry(11, 0.3, 11), deckMat);
+  deckRoof.position.y = deckY + 3.2;
+  hancock.add(deckRoof);
+  // glass railing + corner posts around the deck
+  for (const [gx, gz, rw, rd] of [
+    [0, 5.4, 11, 0.15],
+    [0, -5.4, 11, 0.15],
+    [5.4, 0, 0.15, 11],
+    [-5.4, 0, 0.15, 11],
+  ]) {
+    const glass = new THREE.Mesh(new THREE.BoxGeometry(rw, 2.2, rd), deckGlass);
+    glass.position.set(gx, deckY + 1.3, gz);
+    hancock.add(glass);
+  }
+  for (const [px, pz] of [
+    [5.4, 5.4],
+    [5.4, -5.4],
+    [-5.4, 5.4],
+    [-5.4, -5.4],
+  ]) {
+    const post = new THREE.Mesh(new THREE.BoxGeometry(0.4, 3.5, 0.4), deckMat);
+    post.position.set(px, deckY + 1.6, pz);
+    hancock.add(post);
+  }
   hancock.position.set(LANDMARKS.hancock[0], 0, LANDMARKS.hancock[1]);
   group.add(hancock);
 
@@ -110,8 +146,8 @@ export function buildLandmarks(scene) {
   );
   hRoof.position.y = 17.5;
   hotel.add(hBody, hRoof);
-  const heart = makeEmojiSprite('💗', 4.5);
-  heart.position.y = 22;
+  const heart = makeEmojiSprite('🗝️', 3.4);
+  heart.position.y = 21;
   hotel.add(heart);
   hotel.position.set(LANDMARKS.hotel[0], 0, LANDMARKS.hotel[1]);
   group.add(hotel);
@@ -284,58 +320,59 @@ export function buildLandmarks(scene) {
     roughness: 0.2,
     metalness: 0.3,
   });
-  // glowing glass core (the warm roastery interior)
-  const sbCore = new THREE.Mesh(new THREE.BoxGeometry(8.4, 15, 8.4), sbGlass);
-  sbCore.position.y = 7.5;
+  // glowing glass core (the warm roastery interior) — shorter + wider footprint
+  const sbCore = new THREE.Mesh(new THREE.BoxGeometry(13, 9.5, 12), sbGlass);
+  sbCore.position.y = 4.75;
   sbCore.castShadow = true;
   sbux.add(sbCore);
   // white floor ledges wrapping the tower
-  for (const y of [0.2, 3.9, 7.6, 11.3, 15]) {
-    const ledge = new THREE.Mesh(new THREE.BoxGeometry(8.9, 0.34, 8.9), sbWhite);
+  for (const y of [0.2, 3.3, 6.4, 9.5]) {
+    const ledge = new THREE.Mesh(new THREE.BoxGeometry(13.5, 0.34, 12.5), sbWhite);
     ledge.position.y = y;
     sbux.add(ledge);
   }
   // white corner piers
   for (const [px, pz] of [
-    [4.25, 4.25],
-    [4.25, -4.25],
-    [-4.25, 4.25],
-    [-4.25, -4.25],
+    [6.4, 5.9],
+    [6.4, -5.9],
+    [-6.4, 5.9],
+    [-6.4, -5.9],
   ]) {
-    const pier = new THREE.Mesh(new THREE.BoxGeometry(0.5, 15, 0.5), sbWhite);
-    pier.position.set(px, 7.5, pz);
+    const pier = new THREE.Mesh(new THREE.BoxGeometry(0.5, 9.5, 0.5), sbWhite);
+    pier.position.set(px, 4.75, pz);
     sbux.add(pier);
   }
   // rooftop terrace with umbrellas
   const sbRoof = new THREE.Mesh(
-    new THREE.BoxGeometry(8, 0.2, 8),
+    new THREE.BoxGeometry(12.5, 0.2, 11.5),
     new THREE.MeshStandardMaterial({ color: '#7fae6a', roughness: 1 })
   );
-  sbRoof.position.y = 15.2;
+  sbRoof.position.y = 9.7;
   sbux.add(sbRoof);
   for (const [ux, uz] of [
-    [-2.6, -2.6],
-    [2.6, -2.6],
-    [-2.6, 2.6],
+    [-4, -4],
+    [4, -4],
+    [-4, 4],
+    [4, 4],
   ]) {
     const upole = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 1.1, 5), sbWhite);
-    upole.position.set(ux, 15.8, uz);
+    upole.position.set(ux, 10.3, uz);
     const ucanopy = new THREE.Mesh(
       new THREE.ConeGeometry(0.85, 0.4, 8),
       new THREE.MeshStandardMaterial({ color: '#8a3b2e', roughness: 0.7 })
     );
-    ucanopy.position.set(ux, 16.5, uz);
+    ucanopy.position.set(ux, 11, uz);
     sbux.add(upole, ucanopy);
   }
 
   // the signature rounded glass corner tower, at the SE corner facing the plaza
   const sbTower = new THREE.Group();
-  const towerGlass = new THREE.Mesh(new THREE.CylinderGeometry(2.7, 2.7, 16.5, 20), sbGlass);
-  towerGlass.position.y = 8.25;
+  const towerGlass = new THREE.Mesh(new THREE.CylinderGeometry(3, 3, 11.5, 20), sbGlass);
+  towerGlass.position.y = 5.75;
   sbTower.add(towerGlass);
   // white floor rings on the tower
-  for (const y of [3.9, 7.6, 11.3]) {
-    const ring = new THREE.Mesh(new THREE.CylinderGeometry(2.78, 2.78, 0.34, 20), sbWhite);
+  for (const y of [3.3, 6.4, 9.4]) {
+    const ring = new THREE.Mesh(new THREE.CylinderGeometry(3.08, 3.08, 0.34, 20), sbWhite);
     ring.position.y = y;
     sbTower.add(ring);
   }
@@ -355,18 +392,18 @@ export function buildLandmarks(scene) {
   sbSignTex.colorSpace = THREE.SRGBColorSpace;
   const thetaLen = 2.2;
   const signBand = new THREE.Mesh(
-    new THREE.CylinderGeometry(2.82, 2.82, 1.5, 24, 1, true, -thetaLen / 2, thetaLen),
+    new THREE.CylinderGeometry(3.12, 3.12, 1.6, 24, 1, true, -thetaLen / 2, thetaLen),
     new THREE.MeshBasicMaterial({ map: sbSignTex, side: THREE.DoubleSide })
   );
-  signBand.position.y = 14.4;
+  signBand.position.y = 9.6;
   signBand.rotation.y = -Math.PI / 4; // face the SE corner
   sbTower.add(signBand);
   // domed white cap
   const cap = new THREE.Mesh(
-    new THREE.SphereGeometry(2.9, 20, 12, 0, Math.PI * 2, 0, Math.PI * 0.5),
+    new THREE.SphereGeometry(3.2, 20, 12, 0, Math.PI * 2, 0, Math.PI * 0.5),
     sbWhite
   );
-  cap.position.y = 16.5;
+  cap.position.y = 11.5;
   sbTower.add(cap);
   // gold siren medallion on the cap, facing SE
   const medallion = new THREE.Mesh(
@@ -375,18 +412,18 @@ export function buildLandmarks(scene) {
   );
   medallion.rotation.set(Math.PI / 2, 0, 0);
   medallion.rotation.z = Math.PI / 4;
-  medallion.position.set(1.9, 18.2, 1.9);
+  medallion.position.set(2.1, 13, 2.1);
   sbTower.add(medallion);
   // flag pole + flag on top
-  const sbFlagPole = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 4, 5), sbWhite);
-  sbFlagPole.position.set(0, 20.5, 0);
+  const sbFlagPole = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 3.4, 5), sbWhite);
+  sbFlagPole.position.set(0, 14.2, 0);
   const sbFlag = new THREE.Mesh(
     new THREE.PlaneGeometry(1.4, 0.9),
     new THREE.MeshBasicMaterial({ color: '#0a6b3f', side: THREE.DoubleSide })
   );
-  sbFlag.position.set(0.75, 21.7, 0);
+  sbFlag.position.set(0.75, 15.3, 0);
   sbTower.add(sbFlagPole, sbFlag);
-  sbTower.position.set(4.2, 0, 4.2);
+  sbTower.position.set(6, 0, 5.5);
   sbux.add(sbTower);
 
   sbux.position.set(LANDMARKS.starbucks[0], 0, LANDMARKS.starbucks[1]);
