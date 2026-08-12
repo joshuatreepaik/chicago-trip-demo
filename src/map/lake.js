@@ -59,7 +59,7 @@ export function buildLake(scene) {
   domeBase.position.set(6, 1.1, 0);
   pier.add(domeBase, dome);
 
-  // Ferris wheel (Centennial Wheel) — at the LAKE end, rotates slowly, glows for bloom
+  // Ferris wheel (Centennial Wheel), at the LAKE end, rotates slowly, glows for bloom
   const wheel = new THREE.Group();
   const ringMat = new THREE.MeshStandardMaterial({
     color: '#e8ecf0',

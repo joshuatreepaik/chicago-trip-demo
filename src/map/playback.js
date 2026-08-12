@@ -355,7 +355,7 @@ export class Playback {
     this.hud.showBanner({ sticky: true, text: C.hud.finaleBanner || C.hud.banner });
     this.effects.startFireworkShow(70, -5);
     this.effects.startHearts(this.couple.group.position);
-    // camera: turn east — sky and Lake Michigan, couple silhouetted below
+    // camera: turn east, sky and Lake Michigan, couple silhouetted below
     this.desiredTarget.copy(FINALE_TARGET);
     this.desiredOffset.copy(FINALE_OFFSET);
   }
@@ -484,7 +484,7 @@ export class Playback {
       if (seg.mode === 'boat') {
         vehicle.position.set(this._pos.x, 0.25, this._pos.z);
         vehicle.rotation.set(0, rotY, Math.sin(this.time * 2) * 0.03);
-        // the couple stands at the bow — king of the world!
+        // the couple stands at the bow, king of the world!
         this.couple.group.visible = true;
         this.couple.group.position
           .set(this._pos.x, 1.35, this._pos.z)

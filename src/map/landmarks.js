@@ -42,7 +42,7 @@ export function buildLandmarks(scene) {
     antenna.position.set(s * 1.6, 94, 0);
     hancock.add(antenna);
   }
-  // observation deck near the top — visitors stand out here (the couple rides up)
+  // observation deck near the top, visitors stand out here (the couple rides up)
   const deckY = 76;
   const deckMat = new THREE.MeshStandardMaterial({ color: '#2f333a', roughness: 0.6 });
   const deckGlass = new THREE.MeshStandardMaterial({
@@ -320,7 +320,7 @@ export function buildLandmarks(scene) {
     roughness: 0.2,
     metalness: 0.3,
   });
-  // glowing glass core (the warm roastery interior) — shorter + wider footprint
+  // glowing glass core (the warm roastery interior), shorter + wider footprint
   const sbCore = new THREE.Mesh(new THREE.BoxGeometry(13, 9.5, 12), sbGlass);
   sbCore.position.y = 4.75;
   sbCore.castShadow = true;
@@ -547,7 +547,7 @@ export function buildLandmarks(scene) {
   entryArch.rotation.x = Math.PI / 2;
   entryArch.position.set(0, 2.4, 5.1);
   arts.add(entry, entryArch);
-  // the famous courtyard — a big tree peeking over the roofline
+  // the famous courtyard, a big tree peeking over the roofline
   const courtTree = new THREE.Mesh(
     new THREE.IcosahedronGeometry(1.9, 0),
     new THREE.MeshStandardMaterial({ color: '#5f9e55', roughness: 1, flatShading: true })
@@ -575,7 +575,7 @@ export function buildLandmarks(scene) {
   // hull with pointed bow (box + cone-ish prow)
   const hull = new THREE.Mesh(new THREE.BoxGeometry(9.5, 1.1, 3), white);
   hull.position.y = 0.55;
-  // triangular prism prow — one vertex pointing forward (+x)
+  // triangular prism prow, one vertex pointing forward (+x)
   const bow = new THREE.Mesh(new THREE.CylinderGeometry(1.5, 1.5, 1.1, 3, 1), white);
   bow.position.set(5.2, 0.55, 0);
   bow.rotation.y = -Math.PI / 2;
@@ -583,7 +583,7 @@ export function buildLandmarks(scene) {
   waterline.position.y = 0.13;
   boat.add(hull, bow, waterline);
 
-  // hull name — canvas texture plane on both sides
+  // hull name, canvas texture plane on both sides
   const nameCanvas = document.createElement('canvas');
   nameCanvas.width = 256;
   nameCanvas.height = 48;

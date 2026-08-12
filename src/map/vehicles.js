@@ -50,7 +50,7 @@ export function buildCar(scene) {
   const bodyMat = new THREE.MeshStandardMaterial({ color: '#8fd3c7', roughness: 0.4 });
   const body = new THREE.Mesh(new THREE.BoxGeometry(3.4, 0.85, 1.8), bodyMat);
   body.position.y = 0.85;
-  // open cabin (convertible!) — low walls so the couple pokes out
+  // open cabin (convertible!), low walls so the couple pokes out
   const front = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.55, 1.7), bodyMat);
   front.position.set(1.35, 1.45, 0);
   const back = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.55, 1.7), bodyMat);

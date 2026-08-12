@@ -174,7 +174,7 @@ export const STOPS = [
     sky: 'night',
     note: 'lights out before day two 💤',
     pos: [-10, 9],
-    indoors: true, // asleep inside the hotel — they come back out next morning
+    indoors: true, // asleep inside the hotel, they come back out next morning
     leg: [
       {
         // back east along the promenade to the hotel
@@ -203,7 +203,7 @@ export const STOPS = [
     eat: true,
     leg: [
       {
-        // a fresh celebration morning — stepping out of the hotel
+        // a fresh celebration morning, stepping out of the hotel
         mode: 'walk',
         points: [
           [-10, 9],
@@ -224,7 +224,7 @@ export const STOPS = [
     day: 2,
     sky: 'day',
     note: 'up and around on the Ferris wheel 🎡',
-    pos: [76, -16], // the wheel — camera frames it while they ride
+    pos: [76, -16], // the wheel, camera frames it while they ride
     ride: 'ferris',
     cameraOffset: [-34, 15, 33],
     leg: [
@@ -321,7 +321,7 @@ export const STOPS = [
   },
 ];
 
-// Finale: after dinner, one last walk back to the Riverwalk at sunset —
+// Finale: after dinner, one last walk back to the Riverwalk at sunset ,
 // then the camera turns to the lake for fireworks in the sky.
 export const FINALE_WAYPOINTS = [
   [24, -32],

@@ -36,7 +36,7 @@ export const RIVER_BRANCHES = [
   { xMin: -122, xMax: -114, zMin: -70, zMax: -4 },
   { xMin: -122, xMax: -114, zMin: 4, zMax: 42 },
 ];
-// Lake Michigan east of x = 46 — oversized so the horizon is always water
+// Lake Michigan east of x = 46, oversized so the horizon is always water
 export const LAKE = { xMin: 46, xMax: 280, zMin: -280, zMax: 200 };
 
 // Millennium Park green patch (with a tiny Bean!)
@@ -81,7 +81,7 @@ export const EXCLUSIONS = [
 export const MAP_BOUNDS = { xMin: -135, xMax: 44, zMin: -138, zMax: 42 };
 
 // Elevated "L" track: runs above Lake St then up an alley by Wells,
-// rendered at TRACK_Y (the authentic Loop look — track over the street)
+// rendered at TRACK_Y (the authentic Loop look, track over the street)
 export const TRACK_Y = 6;
 export const L_TRACK = [
   [22, 18],
@@ -98,7 +98,7 @@ export const L_STATIONS = [
   { name: 'ChicagoAve', pos: [-87, -78] },
 ];
 
-// bascule drawbridges: every street crossing the river — the deck halves
+// bascule drawbridges: every street crossing the river, the deck halves
 // swing up when the tour boat approaches, Chicago style
 export const BRIDGE_XS = [0, -15, -30, -45, -60, -75, -90, -105];
 

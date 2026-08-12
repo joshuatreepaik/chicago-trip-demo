@@ -52,7 +52,7 @@ export function buildCity(scene) {
     }
   };
   for (const s of V_STREETS) {
-    // streets crossing the river stop at the banks — drawbridges span the gap
+    // streets crossing the river stop at the banks, drawbridges span the gap
     const crossesRiver = s.from < RIVER.zMin - 1 && s.to > RIVER.zMax + 1;
     const spans = crossesRiver
       ? [
@@ -367,7 +367,7 @@ export function buildCity(scene) {
     drawbridges.push({ x: bx, halves, angle: 0 });
   }
 
-  // ---- flowers (tiny colorful dots — riverwalk, park, gold coast) ----
+  // ---- flowers (tiny colorful dots, riverwalk, park, gold coast) ----
   const flowerSpots = [];
   for (let x = -104; x <= 36; x += 3.2) {
     if (rng() < 0.75) flowerSpots.push([x + rng() * 2, 5 + rng() * 1.1]);

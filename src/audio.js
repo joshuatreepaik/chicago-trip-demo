@@ -1,4 +1,4 @@
-// All sound is synthesized with WebAudio — no audio files needed.
+// All sound is synthesized with WebAudio, no audio files needed.
 // - letter scene: dreamy music-box arpeggio
 // - map scene: Animal Crossing-style plucky loop (melody + bass + chords)
 // - SFX: footsteps, boat, train, car, arrival chime, eating, firework booms

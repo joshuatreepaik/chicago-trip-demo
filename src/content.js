@@ -1,6 +1,6 @@
 // Single source of all human-facing copy. This is the public showcase build,
 // so it ships the depersonalized DEMO profile. (The private build swaps in a
-// personal profile via the same toggle — VITE_DEMO / ?demo.)
+// personal profile via the same toggle, VITE_DEMO / ?demo.)
 
 const isDemo =
   import.meta.env.VITE_DEMO !== 'false'; // demo by default in the public repo
@@ -67,7 +67,7 @@ const DEMO = {
   },
 };
 
-// The public build has no personal profile — both resolve to the demo copy.
+// The public build has no personal profile, both resolve to the demo copy.
 const PERSONAL = DEMO;
 
 export const C = isDemo ? DEMO : PERSONAL;
